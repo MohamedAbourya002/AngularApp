@@ -1,0 +1,68 @@
+<div>
+
+<p>{{ childData }}</p>
+
+<p>Name: {{ child.name }}, Age: {{ child.age }}</p>
+
+<button (click)="notifyParent()">Notify Parent</button>
+
+</div>
+<h4> ----------------------------------------------------------------------------</h4>
+<!-- *ngFor -->
+<ul>
+    <h4> ngfor example</h4>
+
+    <li *ngFor="let student of students ;let x=index"> 
+        {{x+1}}- {{ student}}
+    </li>
+</ul>
+
+<h4> ----------------------------------------------------------------------------</h4>
+<!-- *ngFor Group -->
+<ul>
+    <h4> ngforGroup example</h4>
+
+<ul  *ngFor="let ntgBranch of NtgBranches ">
+    <li>{{ntgBranch.country}}
+    <ul>
+        <li *ngFor="let branches of ntgBranch.branches">
+            {{branches.branchName}}
+             <ul>
+                <li >
+                    {{branches.address.str}} , {{branches.address.buildNum}} , {{branches.address.flat}}</li>
+            </ul>
+        </li>
+    </ul>
+    </li>
+</ul>
+
+<h4> ----------------------------------------------------------------------------</h4>
+
+
+<div><button (click)="addcourse()">Add</button></div>
+
+
+<div >
+<div *ngIf="courses.length > 0 ;then listcourse else nocourse"></div>
+<ng-template  #listcourse>
+<ul >
+    <li *ngFor="let course of courses ; trackBy:trackByCourse">
+   <button  (click)="removeCourse(course)"> Remove</button> {{course}}
+    </li>
+</ul>
+</ng-template>
+
+<ng-template  #nocourse>
+    <p>No courses yet</p>
+</ng-template>
+</div>
+<h4> ----------------------------------------------------------------------------</h4>
+
+<!-- NG SWITCH CASE -->
+
+<ul class="nav nav-pills">
+    <li><a>Courses</a></li>
+    <li><a>Certificates</a></li>
+</ul>
+
+

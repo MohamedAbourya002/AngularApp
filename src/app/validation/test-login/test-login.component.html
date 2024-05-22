@@ -1,0 +1,33 @@
+<form   #f="ngForm"  (ngSubmit)="submit(f)">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input 
+           class="form-control"
+           type="email"
+           required  minlength="5" maxlength="20"
+            url
+            id="exampleInputEmail1"
+             name="email"  ngModel  #email="ngModel"
+           (change)="logObj(email)">
+           <div *ngIf="email.invalid && email.touched"
+           class="alert alert-danger" role="alert">
+           <div *ngIf="email.errors && email.errors['required']"> Please Enter Email Address!</div>
+           <!-- <div *ngIf="email.errors && email.errors['minlength']"> Min length is 5!</div>
+           <div *ngIf="email.errors && email.errors['pattern']"> pattern not valid!</div> -->
+           <p *ngIf="email.errors && email.errors['url']">error message</p>
+
+          </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" 
+           class="form-control" 
+            id="exampleInputPassword1" 
+            >
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary"  [disabled]="f.invalid">Submit</button>
+</form>
