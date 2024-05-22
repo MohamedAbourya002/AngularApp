@@ -1,0 +1,2 @@
+# AngularApp
+firstApp as frontend
